@@ -1,4 +1,12 @@
 const gridContainer = document.querySelector('#gridContainer');
+const paintButton = document.querySelector('#brush');
+const eraseButton = document.querySelector('#eraser');
+let artMode = 'brush';
+let colorCode = '#000000';
+let paintMode = 'click';
+
+Main();
+
 
 function drawGrid(dimension){
     let counter = 0;
@@ -10,6 +18,13 @@ function drawGrid(dimension){
             let gridPixel = document.createElement('div');
             gridPixel.classList.add('pixel');
             gridPixel.setAttribute('id',counter);
+            gridPixel.addEventListener('click',()=>{
+                if (artMode == 'brush'){
+                    gridPixel.style.backgroundColor = colorCode;
+                } else {
+                    gridPixel.style.backgroundColor = 'white';
+                }
+            });
             col.appendChild(gridPixel);
             counter++;
         }
@@ -17,5 +32,22 @@ function drawGrid(dimension){
     }
 }
 
+function pickColor(){
 
-drawGrid(16);
+}
+
+
+
+function Main(){
+    paintButton.addEventListener('click',()=> {
+        artMode = 'brush';
+    });
+    eraseButton.addEventListener('click',()=>{
+        artMode = 'eraser';
+    });
+    drawGrid(16);
+    pickColor();
+}
+
+
+

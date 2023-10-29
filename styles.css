@@ -1,0 +1,13 @@
+#gridContainer{
+    display: flex;
+    text-align: center;
+    border: 1px solid black;
+    justify-content: center;
+    align-items: center;
+}
+
+.pixel{
+    border: 1px solid grey;
+    padding: 20px;
+    margin: 0;
+}

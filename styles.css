@@ -26,7 +26,8 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 610px;
+    min-height: 610px;
+    max-height: 610px;
 }
 
 .pixel{ /*Padding is Added from JS*/
@@ -60,14 +61,23 @@ header{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #1b263b;
+    background-color: #2b3e55;
     padding-bottom: 0;
     margin-bottom:0 ;
+    text-decoration: none;
+    color: #e0e1dd;
+}
+
+#footer img{
+  margin-left: 15px;
+  width: 17px;
+  height: auto;
+  color: wheat;
 }
 
 #footer a{
-    text-decoration: none;
-    color: #e0e1dd;
+  text-decoration: none;
+  color: #e0e1dd;
 }
 
 input[type="color"] {

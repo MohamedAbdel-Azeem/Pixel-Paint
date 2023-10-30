@@ -8,11 +8,18 @@ const rainbowButton = document.querySelector('#rainbow');
 let artMode = 'brush';
 let colorCode = '#000000';
 let paintMode = 'click';
-let dimension = 16;
+const dimension = 16;
 const gridSize = 600;
 let allPixels = [];
 Main();
 
+dropdownDimension.addEventListener('change',()=>{
+    dimension = parseInt(dropdownDimension.selectedOptions[0].value);
+    while(gridContainer.firstChild){
+        gridContainer.removeChild(gridContainer.firstChild);
+    }
+    drawGrid();
+});
 
 function drawGrid(){
     let counter = 0;
@@ -24,20 +31,12 @@ function drawGrid(){
             let gridPixel = document.createElement('div');
             gridPixel.classList.add('pixel');
             gridPixel.setAttribute('id',counter);
-            gridPixel.style.padding = getPadding();
-            gridPixel.addEventListener('click',()=>{
-                if (artMode == 'brush'){
-                    gridPixel.style.backgroundColor = colorCode;
-                    gridPixel.style.border = `1px solid ${colorCode}`;
-                } else if (artMode == 'rainbow') {
-                    const randomColor = randomColorGenerator();
-                    gridPixel.style.backgroundColor = randomColor;
-                    gridPixel.style.border = `1px solid ${randomColor}`;
-                } 
-                else {
-                    gridPixel.style.backgroundColor = 'white';
-                    gridPixel.style.border = '1px solid grey'
-                }
+            gridPixel.style.padding = '16px';
+            gridPixel.addEventListener('mousemove',(event)=>{
+                handleDraw(event,gridPixel)
+            });
+            gridPixel.addEventListener('click',(event)=>{
+                handleDraw2(gridPixel)
             });
             col.appendChild(gridPixel);
             allPixels.push(gridPixel);
@@ -51,15 +50,6 @@ function pickColor(){
     
 }
 
-function getPadding(){
-    switch (dimension){
-        case 32 : return '8px';
-        case 8 : return '32px';
-        case 4 : return '64px';
-        case 64 : return '4px';
-        default : return '16px';
-    }
-}
 
 
 function Main(){
@@ -112,4 +102,36 @@ function randomColorGenerator(){
         '#ff0000'];
     let index = parseInt(Math.random()*randomColors.length);
     return randomColors[index];
+}
+
+function handleDraw(event, gridPixel){
+    if (event.buttons === 1){
+        if (artMode == 'brush'){
+            gridPixel.style.backgroundColor = colorCode;
+            gridPixel.style.border = `1px solid ${colorCode}`;
+        } else if (artMode == 'rainbow') {
+            const randomColor = randomColorGenerator();
+            gridPixel.style.backgroundColor = randomColor;
+            gridPixel.style.border = `1px solid ${randomColor}`;
+        } 
+        else {
+            gridPixel.style.backgroundColor = 'white';
+            gridPixel.style.border = '1px solid grey'
+        }
+    }
+}
+
+function handleDraw2(gridPixel){
+    if (artMode == 'brush'){
+        gridPixel.style.backgroundColor = colorCode;
+        gridPixel.style.border = `1px solid ${colorCode}`;
+    } else if (artMode == 'rainbow') {
+        const randomColor = randomColorGenerator();
+        gridPixel.style.backgroundColor = randomColor;
+        gridPixel.style.border = `1px solid ${randomColor}`;
+    } 
+    else {
+        gridPixel.style.backgroundColor = 'white';
+        gridPixel.style.border = '1px solid grey'
+    }
 }

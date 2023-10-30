@@ -2,7 +2,9 @@ const gridContainer = document.querySelector('#gridContainer');
 const paintButton = document.querySelector('#brush');
 const eraseButton = document.querySelector('#eraser');
 const clearButton = document.querySelector('#clear');
-const colorButton = document.querySelector('#color-input');
+const colorButton = document.querySelector('#color-picker');
+const color_picker_wrapper = document.getElementById("color-picker-wrapper");
+const rainbowButton = document.querySelector('#rainbow');
 let artMode = 'brush';
 let colorCode = '#000000';
 let paintMode = 'click';
@@ -27,7 +29,12 @@ function drawGrid(){
                 if (artMode == 'brush'){
                     gridPixel.style.backgroundColor = colorCode;
                     gridPixel.style.border = `1px solid ${colorCode}`;
-                } else {
+                } else if (artMode == 'rainbow') {
+                    const randomColor = randomColorGenerator();
+                    gridPixel.style.backgroundColor = randomColor;
+                    gridPixel.style.border = `1px solid ${randomColor}`;
+                } 
+                else {
                     gridPixel.style.backgroundColor = 'white';
                     gridPixel.style.border = '1px solid grey'
                 }
@@ -66,6 +73,13 @@ function Main(){
     colorButton.addEventListener('input',()=>{
         colorCode = colorButton.value;
     });
+    colorButton.onchange = function() {
+        color_picker_wrapper.style.backgroundColor = colorButton.value;    
+    }
+    color_picker_wrapper.style.backgroundColor = colorButton.value;
+    rainbowButton.addEventListener('click',()=> {
+        artMode = 'rainbow';
+    });
     drawGrid();
     pickColor();
 }
@@ -77,4 +91,25 @@ function clearGrid(){
         allPixels[i].style.backgroundColor = 'white';
         allPixels[i].style.border = '1px solid grey';
     }
+}
+
+
+function randomColorGenerator(){
+    /* -> Completely Random but Ugly Colors
+    let red = parseInt(Math.random()*256);
+    let green = parseInt(Math.random()*256);
+    let blue = parseInt(Math.random()*256);
+    return `rgb(${red},${green},${blue})`;
+    */
+    let randomColors = ['#ff0000',
+        '#ff7300',
+        '#fffb00',
+        '#48ff00',
+        '#00ffd5',
+        '#002bff',
+        '#7a00ff',
+        '#ff00c8',
+        '#ff0000'];
+    let index = parseInt(Math.random()*randomColors.length);
+    return randomColors[index];
 }

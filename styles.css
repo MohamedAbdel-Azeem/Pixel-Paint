@@ -11,19 +11,26 @@ body{
     margin: 25px;
 }
 
+#gridWrapper{
+    height: 640px;
+    width: 640px;
+    background-color: #1b263b;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    border-radius: 25px;
+}
 
 #gridContainer{
     display: flex;
-    text-align: center;
-    border: 2px solid black;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    height: 610px;
 }
 
-.pixel{
+.pixel{ /*Padding is Added from JS*/
     border: 1px solid grey;
-    padding: 20px;
-    margin: 0;
     background-color: white;
 }
 
@@ -36,10 +43,6 @@ body{
     gap: 10px;
 }
 
-canvas{
-    position: relative;
-    
-}
 
 header{
     display: flex;
@@ -49,18 +52,20 @@ header{
     font-size: 24px;
     justify-content: center;
     align-items: center;
-    height: 83px;
+    height: 99px;
 }
 
-footer{
+#footer{
     height: 24px;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #1b263b;
+    padding-bottom: 0;
+    margin-bottom:0 ;
 }
 
-footer a{
+#footer a{
     text-decoration: none;
     color: #e0e1dd;
 }

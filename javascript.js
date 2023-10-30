@@ -2,12 +2,13 @@ const gridContainer = document.querySelector('#gridContainer');
 const paintButton = document.querySelector('#brush');
 const eraseButton = document.querySelector('#eraser');
 const clearButton = document.querySelector('#clear');
+const colorButton = document.querySelector('#color-input');
 let artMode = 'brush';
 let colorCode = '#000000';
 let paintMode = 'click';
 let dimension = 16;
 const gridSize = 600;
-
+let allPixels = [];
 Main();
 
 
@@ -25,11 +26,14 @@ function drawGrid(){
             gridPixel.addEventListener('click',()=>{
                 if (artMode == 'brush'){
                     gridPixel.style.backgroundColor = colorCode;
+                    gridPixel.style.border = `1px solid ${colorCode}`;
                 } else {
                     gridPixel.style.backgroundColor = 'white';
+                    gridPixel.style.border = '1px solid grey'
                 }
             });
             col.appendChild(gridPixel);
+            allPixels.push(gridPixel);
             counter++;
         }
         gridContainer.appendChild(col);
@@ -37,7 +41,7 @@ function drawGrid(){
 }
 
 function pickColor(){
-
+    
 }
 
 function getPadding(){
@@ -58,10 +62,19 @@ function Main(){
     eraseButton.addEventListener('click',()=>{
         artMode = 'eraser';
     });
-
+    clearButton.addEventListener('click',clearGrid);
+    colorButton.addEventListener('input',()=>{
+        colorCode = colorButton.value;
+    });
     drawGrid();
     pickColor();
 }
 
 
 
+function clearGrid(){
+    for (let i = 0; i < allPixels.length ; i++){
+        allPixels[i].style.backgroundColor = 'white';
+        allPixels[i].style.border = '1px solid grey';
+    }
+}

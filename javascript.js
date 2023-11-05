@@ -13,14 +13,6 @@ const gridSize = 600;
 let allPixels = [];
 Main();
 
-dropdownDimension.addEventListener('change',()=>{
-    dimension = parseInt(dropdownDimension.selectedOptions[0].value);
-    while(gridContainer.firstChild){
-        gridContainer.removeChild(gridContainer.firstChild);
-    }
-    drawGrid();
-});
-
 function drawGrid(){
     let counter = 0;
     for (let i = 0; i < dimension ; i++){
@@ -135,3 +127,5 @@ function handleDraw2(gridPixel){
         gridPixel.style.border = '1px solid grey'
     }
 }
+
+

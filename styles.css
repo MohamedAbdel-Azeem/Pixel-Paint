@@ -1,7 +1,9 @@
 body{
-    margin: 0;
-    padding: 0;
-    background-color: #415a77;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: #415a77;
 }
 
 #Main{
@@ -9,6 +11,7 @@ body{
     justify-content: center;
     gap: 400px;
     margin: 25px;
+    max-width: 100%;
 }
 
 #gridWrapper{
@@ -62,10 +65,11 @@ header{
     justify-content: center;
     align-items: center;
     background-color: #2b3e55;
-    padding-bottom: 0;
-    margin-bottom:0 ;
     text-decoration: none;
     color: #e0e1dd;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 
 #footer img{

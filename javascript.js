@@ -9,8 +9,10 @@ let artMode = 'brush';
 let colorCode = '#000000';
 let paintMode = 'click';
 const dimension = 16;
-const gridSize = 600;
 let allPixels = [];
+
+
+
 Main();
 
 function drawGrid(){
@@ -23,7 +25,6 @@ function drawGrid(){
             let gridPixel = document.createElement('div');
             gridPixel.classList.add('pixel');
             gridPixel.setAttribute('id',counter);
-            gridPixel.style.padding = '16px';
             gridPixel.addEventListener('mousemove',(event)=>{
                 handleDrawDrag(event,gridPixel)
             });
@@ -65,7 +66,7 @@ function Main(){
 function clearGrid(){
     for (let i = 0; i < allPixels.length ; i++){
         allPixels[i].style.backgroundColor = 'white';
-        allPixels[i].style.border = '1px solid grey';
+        allPixels[i].style.border = '0.1rem solid grey';
     }
 }
 
@@ -94,15 +95,15 @@ function handleDrawDrag(event, gridPixel){
     if (event.buttons === 1){
         if (artMode == 'brush'){
             gridPixel.style.backgroundColor = colorCode;
-            gridPixel.style.border = `1px solid ${colorCode}`;
+            gridPixel.style.border = `0.1rem solid ${colorCode}`;
         } else if (artMode == 'rainbow') {
             const randomColor = randomColorGenerator();
             gridPixel.style.backgroundColor = randomColor;
-            gridPixel.style.border = `1px solid ${randomColor}`;
+            gridPixel.style.border = `0.1rem solid ${randomColor}`;
         } 
         else {
             gridPixel.style.backgroundColor = 'white';
-            gridPixel.style.border = '1px solid grey'
+            gridPixel.style.border = '0.1rem solid grey'
         }
     }
 }
@@ -110,15 +111,15 @@ function handleDrawDrag(event, gridPixel){
 function handleDrawClick(gridPixel){
     if (artMode == 'brush'){
         gridPixel.style.backgroundColor = colorCode;
-        gridPixel.style.border = `1px solid ${colorCode}`;
+        gridPixel.style.border = `0.1rem solid ${colorCode}`;
     } else if (artMode == 'rainbow') {
         const randomColor = randomColorGenerator();
         gridPixel.style.backgroundColor = randomColor;
-        gridPixel.style.border = `1px solid ${randomColor}`;
+        gridPixel.style.border = `0.1rem solid ${randomColor}`;
     } 
     else {
         gridPixel.style.backgroundColor = 'white';
-        gridPixel.style.border = '1px solid grey'
+        gridPixel.style.border = '0.1rem solid grey'
     }
 }
 

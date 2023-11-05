@@ -25,10 +25,10 @@ function drawGrid(){
             gridPixel.setAttribute('id',counter);
             gridPixel.style.padding = '16px';
             gridPixel.addEventListener('mousemove',(event)=>{
-                handleDraw(event,gridPixel)
+                handleDrawDrag(event,gridPixel)
             });
             gridPixel.addEventListener('click',(event)=>{
-                handleDraw2(gridPixel)
+                handleDrawClick(gridPixel)
             });
             col.appendChild(gridPixel);
             allPixels.push(gridPixel);
@@ -37,12 +37,6 @@ function drawGrid(){
         gridContainer.appendChild(col);
     }
 }
-
-function pickColor(){
-    
-}
-
-
 
 function Main(){
     paintButton.addEventListener('click',()=> {
@@ -96,7 +90,7 @@ function randomColorGenerator(){
     return randomColors[index];
 }
 
-function handleDraw(event, gridPixel){
+function handleDrawDrag(event, gridPixel){
     if (event.buttons === 1){
         if (artMode == 'brush'){
             gridPixel.style.backgroundColor = colorCode;
@@ -113,7 +107,7 @@ function handleDraw(event, gridPixel){
     }
 }
 
-function handleDraw2(gridPixel){
+function handleDrawClick(gridPixel){
     if (artMode == 'brush'){
         gridPixel.style.backgroundColor = colorCode;
         gridPixel.style.border = `1px solid ${colorCode}`;

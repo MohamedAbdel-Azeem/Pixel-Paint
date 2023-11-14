@@ -9,14 +9,13 @@ body{
 #Main{
     display: flex;
     justify-content: center;
-    gap: 400px;
+    gap: 150px;
     margin: 25px;
-    max-width: 100%;
 }
 
 #gridWrapper{
-    height: 640px;
-    width: 640px;
+    height: 580px;
+    width: 580px;
     background-color: #1b263b;
     padding: 10px;
     align-items: center;
@@ -29,8 +28,6 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 610px;
-    max-height: 610px;
 }
 
 .pixel{ /*Padding is Added from JS*/
@@ -53,10 +50,12 @@ header{
     background-color: #1b263b;
     font-family: 'Public Pixel', sans-serif;
     color: #e0e1dd;
-    font-size: 24px;
+    font-size: 20px;
     justify-content: center;
     align-items: center;
-    height: 99px;
+    height: 10vh;
+    position: relative;
+    top: 0;
 }
 
 #footer{
